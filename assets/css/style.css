@@ -10,12 +10,14 @@ body{
 	color:white;
 	text-align: center;
 	background: black;
+
 }
 
 header{
 	font-size: 50px;
 	width:100%;
 	text-align: center;
+
 }
 
 
@@ -25,6 +27,9 @@ img{
 	margin-right: auto;
 }
 
+
 h3{
 	text-align: left;
 }
+
+
