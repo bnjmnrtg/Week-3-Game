@@ -17,12 +17,21 @@ document.onkeyup = function(event) {
 function playGame() {
     userGuess = String.fromCharCode(event.keyCode).toUpperCase();
     lettersGuessed.push(userGuess);
-    remainingGuesses--;
 
     // This Will Display Letters and # of Guesses
-    $('#guessed-letters').append(' ' + userGuess + " - ");
     $('#guesses-remaining').empty();
     $('#guesses-remaining').html("Guesses Remaining: " + remainingGuesses);
+
+    for (var i = 0; i < 1; i++) {
+        console.log("lettersGuessed" + " " + lettersGuessed);
+        console.log("userGuess"+" "+userGuess);
+        if(correctLetter===userGuess){
+        }
+        else{
+            $('#guessed-letters').append(' ' + userGuess + " - ");
+            remainingGuesses--;
+        }
+    }
 
     if (remainingGuesses === 0) {
         loses++;
