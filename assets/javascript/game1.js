@@ -13,6 +13,11 @@ document.onkeyup = function(event) {
     playGame();
 
 };
+
+$("#reset").on('click', function(){
+    // console.log("button works")
+    restartbutton();
+});
 // ======================================================================================================
 function playGame() {
     userGuess = String.fromCharCode(event.keyCode).toUpperCase();
@@ -22,16 +27,14 @@ function playGame() {
     $('#guesses-remaining').empty();
     $('#guesses-remaining').html("Guesses Remaining: " + remainingGuesses);
 
-    for (var i = 0; i < 1; i++) {
         console.log("lettersGuessed" + " " + lettersGuessed);
-        console.log("userGuess"+" "+userGuess);
-        if(correctLetter===userGuess){
-        }
-        else{
+        console.log("userGuess" + " " + userGuess);
+        if (lettersGuessed != userGuess) {
             $('#guessed-letters').append(' ' + userGuess + " - ");
             remainingGuesses--;
+        } else{
+            return false;
         }
-    }
 
     if (remainingGuesses === 0) {
         loses++;
@@ -99,68 +102,42 @@ function reset() {
     split = [];
     correctLetter = [];
     lettersGuessed = [];
-    currentWord ;
+    currentWord;
     remainingGuesses = 10;
     $('#current-word').html("Word: " + correctLetter);
     $('#guesses-remaining').html("Guesses Remaining: ");
     $('#guessed-letters').html("Letters Guessed: ");
-    
+
 
     playGame();
 };
 
-// for (var i = 0; i < 5; i++) {
-// 	// console.log(userGuess + '===' + wordList[i]);
-// 	if (userGuess === wordList[i].toLowerCase()){
-// 		// console.log('Letter Appears');
-// 		$("#words"). append("<div>"+ userGuess + "</div>")
-
-// 		correctLetter.push(wordList[i])
-// 	 }
-
-
-
-// 	 }
-
-// var correctLetter = []
-
-// var wordList = 'duncan';
-// console.log(correctLetter.length, wordList.length)
-
-// document.onkeyup = function(event){
-// 	userGuess= String.fromCharCode(event.keyCode).toLowerCase();
-// 		// console.log('working');
+function restartbutton(){
+    wins = 0;
+    loses = 0;
+    currentWord = [];
+    split = [];
+    correctLetter = [];
+    lettersGuessed = [];
+    currentWord;
+    remainingGuesses = 10;
+    $('#current-word').html("Word: " + correctLetter);
+    $('#guesses-remaining').html("Guesses Remaining: ");
+    $('#guessed-letters').html("Letters Guessed: ");
+    $('#loss').html("Loses: " + loses);
+    $('#win').html("Wins: " + wins);
+    
 
 
-// if ( correctLetter.length === wordList.length ){
-// 	console.log("functionstoping")
-// 	alert("you win")
-// }
-// // 'parker','ginobili','popovich','leonard';
-
-// 	for (var i = 0; i < 5; i++) {
-// 		console.log(userGuess + '===' + wordList[i]);
-// 		if (userGuess === wordList[i].toLowerCase()){
-// 			// console.log('Letter Appears');
-// 			$("#words"). append("<div>"+ userGuess + "</div>")
-
-// 			correctLetter.push(wordList[i])
-// 		 }
-
-
-
-// 		 }
-
-
-
-
+    playGame();
+};
 
 // var letterIndex= word1.indexOf(userGuess); 
-// 	console.log(''+letterIndex);
+//  console.log(''+letterIndex);
 
 
-// 		var spanToFill = document.getElementById(''+letterIndex);
-// 	console.log(spanToFill);
+//      var spanToFill = document.getElementById(''+letterIndex);
+//  console.log(spanToFill);
 
 
 
