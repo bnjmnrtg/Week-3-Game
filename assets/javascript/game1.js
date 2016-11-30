@@ -23,19 +23,21 @@ function playGame() {
     userGuess = String.fromCharCode(event.keyCode).toUpperCase();
     lettersGuessed.push(userGuess);
 
+    for (var i = 0; i < lettersGuessed.length; i++) {
+         if (userGuess === lettersGuessed) {
+            console.log("same letter");
+         }
+    }
+ 
     // This Will Display Letters and # of Guesses
+    $('#guessed-letters').append(" " + userGuess + " - ");
     $('#guesses-remaining').empty();
     $('#guesses-remaining').html("Guesses Remaining: " + remainingGuesses);
 
         console.log("lettersGuessed" + " " + lettersGuessed);
         console.log("userGuess" + " " + userGuess);
-        if (lettersGuessed != userGuess) {
-            $('#guessed-letters').append(' ' + userGuess + " - ");
-            remainingGuesses--;
-        } else{
-            return false;
-        }
-
+        
+// ========== This will see if you still have  remainingGuesses. ==============
     if (remainingGuesses === 0) {
         loses++;
         $('#loss').empty();
@@ -72,6 +74,7 @@ function playGame() {
         console.log(userGuess === split[i]);
         if (userGuess === split[i]) {
             correctLetter.push(userGuess);
+            console.log(i)
             console.log("Correct Letters" + " " + correctLetter)
             $('#current-word').append(userGuess);
         }
@@ -85,16 +88,6 @@ function playGame() {
     };
 
 }
-
-function updateDisplay(letter) {
-    for (i = 0; i < split.length; i++) {
-        if (split[i] === letter) {
-            split.splice(i, 1, letter);
-        }
-    }
-    updatedDisplay = dashes.join('');
-    $('#current-word').html(updatedDisplay);
-};
 
 // =========== This Is The Reset Function That Automatically Trigers When You LOSE
 function reset() {
@@ -131,18 +124,3 @@ function restartbutton(){
 
     playGame();
 };
-
-// var letterIndex= word1.indexOf(userGuess); 
-//  console.log(''+letterIndex);
-
-
-//      var spanToFill = document.getElementById(''+letterIndex);
-//  console.log(spanToFill);
-
-
-
-
-
-
-
-// }
